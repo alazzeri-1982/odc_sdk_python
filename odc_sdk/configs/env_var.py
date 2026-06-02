@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv, set_key
 from pathlib import Path
 
+BASE_URL = "https://services.scicrunch.io/odc"
+
 
 # read from .env file, use init_api_key() to setup .env file
 # don't pass any args if .env file created with init_api_key()
@@ -14,7 +16,7 @@ def import_api_key(
     if api_key and api_key != "":
         return api_key
     else:
-        print("Unable to import api key")
+        raise ValueError("Unable to import API key")
 
 
 # don't need to check if api key invalid, invalid api key can't access authenticated routes
@@ -33,4 +35,4 @@ def init_api_key() -> None:
         )
         print(f"Env file created at {full_path}")
     else:
-        print("Empty API key is not allowed")
+        raise ValueError("Empty API key is not allowed")

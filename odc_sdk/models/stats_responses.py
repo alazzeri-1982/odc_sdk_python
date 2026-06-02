@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import List
 
 
 # swagger shows id, actual response is datasetid?
@@ -29,7 +28,7 @@ class UserLab:
 class UserStat:
     userid: str
     timestamp: str
-    labs: List[UserLab]
+    labs: str  # was List[UserLab] before, left for user to parse
 
 
 @dataclass
@@ -42,7 +41,7 @@ class LabStat:
     curated: str
 
 
-# Note: different from swagger
+# NOTE: different from swagger
 @dataclass
 class DownloadStat:
     entity_id: str
